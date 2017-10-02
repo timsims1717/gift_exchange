@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="giftex">
+<head><meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css"></link>
+	<title>Gift Exchange</title>
+</head>
+<body>
+	<div class="page-wrap" ng-controller="ParticipantController">
+		<div class="wrapper">
+			<div class="overlap-box" ng-show="signupVisible">
+				<div class="box">
+					<table class="overlap-table">
+						<tr>
+							<td class="label">First Name:</label></td>
+							<td class="entry"><input type="text" ng-model="signup_first_name"></input></td>
+						</tr>
+						<tr>
+							<td class="label">Last Name:</label></td>
+							<td class="entry"><input type="text" ng-model="signup_last_name"></input></td>
+						</tr>
+						<tr>
+							<td class="label">Email:</label></td>
+							<td class="entry"><input type="text" ng-model="signup_email"></input></td>
+						</tr>
+						<tr>
+							<td class="label">Password:</label></td>
+							<td class="entry"><input type="password" ng-model="signup_password"></td>
+						</tr>
+						<tr>
+							<td class="label">Confirm Password:</label></td>
+							<td class="entry"><input type="password" ng-model="signup_password_confirm"></td>
+						</tr>
+						<tr>
+							<td class="label">Are you included in this gift exchange?:</label></td>
+							<td class="entry"><input type="checkbox" ng-model="is_user_included" ng-init="is_user_included = true"></td>
+						</tr>
+					</table>
+					<span class="error-message">{{ signupBoxMessage }}</span>
+				</div>
+				<ul class="box-bottom-buttons">
+					<li><button ng-click="showSetupPageSignup()">Start</button></li>
+					<li><button ng-click="cancelSignupOrSignin()">Cancel</button></li>
+				</ul>
+			</div>
+			<div class="overlap-box" ng-show="signinVisible">
+				<div class="box">
+					<table class="overlap-table">
+						<tr>
+							<td class="label">Email:</label></td>
+							<td class="entry"><input type="text" ng-model="signin_email"></input></td>
+						</tr>
+						<tr>
+							<td class="label">Password:</label></td>
+							<td class="entry"><input type="password" ng-model="signin_password"></td>
+						</tr>
+					</table>
+					<span class="error-message">{{ signinBoxMessage }}</span>
+				</div>
+				<ul class="box-bottom-buttons">
+					<li><button ng-click="showSetupPageSignin()">Start</button></li>
+					<li><button ng-click="cancelSignupOrSignin()">Cancel</button></li>
+				</ul>
+			</div>
+			<div class="overlap-box" ng-show="addParticipantVisible">
+				<div class="box">
+					<div class="left">
+						<table class="overlap-table">
+							<tr>
+								<td class="label">First Name:</label></td>
+								<td class="entry"><input type="text" ng-model="first_name"></input></td>
+							</tr>
+							<tr>
+								<td class="label">Last Name:</label></td>
+								<td class="entry"><input type="text" ng-model="last_name"></input></td>
+							</tr>
+							<tr>
+								<td class="label">Email:</label></td>
+								<td class="entry"><input type="text" ng-model="email"></input></td>
+							</tr>
+						</table>
+					</div>
+					<div class="right">
+						<table class="overlap-table">
+							<tr>
+								<td class="label">Wish List:</label></td>
+								<td class="entry">
+									<input type="text" ng-model="wishlist_input"></input>
+									<button class="list-wishlist-button-add" ng-click="addWishlistItem()">+</button><br>
+								</td>
+							</tr>
+						</table>
+						<ul class="wishlist-add-list">
+							<li ng-repeat="w in wishlist">
+								<button class="list-wishlist-button-remove" ng-click="removeWishlistItem(w)">x</button>&nbsp;{{ w.item }}
+							</li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+					<span class="error-message">{{ addBoxMessage }}</span>
+				</div>
+				<ul class="box-bottom-buttons">
+					<li><button ng-click="createParticipant()" ng-show="addButtonVisible">Add Participant</button></li>
+					<li><button ng-click="updateParticipant()" ng-hide="addButtonVisible">Save Participant</button></li>
+					<li><button ng-click="cancelAdd()">Cancel</button></li>
+				</ul>
+			</div>
+			<div class="overlap-box" ng-show="optionsVisible">
+				<div class="box">
+					<table class="overlap-table">
+						<tr>
+							<td class="label">Dollar Amount:</label></td>
+							<td class="entry"><input type="text" ng-model="dollar_amount"></input></td>
+						</tr>
+						<tr>
+							<td class="label">Location of Gift Exchange:</label></td>
+							<td class="entry"><input type="text" ng-model="location"></input></td>
+						</tr>
+						<tr>
+							<td class="label">Date of Gift Exchange:</label></td>
+							<td class="entry"><input type="text" ng-model="date"></input></td>
+						</tr>
+						<tr>
+							<td class="label">Time of Gift Exchange:</label></td>
+							<td class="entry"><input type="text" ng-model="time"></td>
+						</tr>
+						<tr>
+							<td class="label">Should the recipients be a secret?:</label></td>
+							<td class="entry"><input type="checkbox" ng-model="is_secret"></td>
+						</tr>
+					</table>
+				</div>
+				<ul class="box-bottom-buttons">
+					<li><button ng-click="saveOptions()">Save</button></li>
+					<li><button ng-click="cancelOptions()">Cancel</button></li>
+				</ul>
+			</div>
+		</div>
+		<header>
+			<div class="wrapper">
+				<h1>Gift Exchange</h1>
+			</div>
+		</header>
+		<div class="wrapper" id="intro-page" ng-hide="setupPageVisible">
+			<h2>Instructions</h2>
+			<div class="box">
+				<p>Welcome! With this app you can easily build a gift exchange for up to 30 people. Not only will this randomly assign each person a recipient, but a wish list can be included to help out those who are gift-givingly-challenged.</p><br>
+				<p>The first step is the hardest: getting everyone to send you their email and wish list. One suggestion is to give everyone a ridiculously short deadline, then guilt them by telling them everyone else is done (they're not).</p><br>
+				<p>Once you've gathered the email and wish list of everyone involved, you're practically done! Start a new gift exchange and add people to the list of participants. Then, make sure you change your options to specify a dollar amount, the time and location of the gift exchange, and whether or not the gift exchange is meant to be secret. Finally, you may customize the message that gets sent to each participant.</p><br>
+				<p>And that's it! We hope your gift exchange is a success!</p><br>
+				<div class="page-flow-button-div">
+					<button class="page-flow-button" ng-click="showSignup()">Start New Gift Exchange</button>
+					<button class="page-flow-button" ng-click="showSignin()">Load Old Gift Exchange</button>
+				</div>
+			</div>
+		</div>
+		<div class="wrapper" id="setup-page" ng-show="setupPageVisible">
+			<h2>Welcome {{ user_first_name }}!</h2>
+			<ul class="box-top-buttons">
+				<li><button ng-click="showAddParticipant()">Add Participant</button></li>
+				<li><button ng-click="showOptions()">Options</button></li>
+			</ul>
+			<div class="box">
+				<span class="error-message">{{ participantBoxMessage }}</span>
+				<ul class="participant-list">
+					<li ng-repeat="p in participants">
+						<span class="list-full-name">{{ p.first_name }} {{ p.last_name }}</span>
+						<span class="list-email">{{ p.email }}</span>
+						<button class="list-button-edit" ng-click="showEditParticipant(p)">Edit</button>
+						<button class="list-button-delete" ng-click="deleteParticipant(p)">Delete</button>
+						<button class="list-wishlist-drop" ng-click="showWishlist($index)">&#9660; Wish List</button>
+						<ul class="list-wishlist-down" ng-show="wishlistVisible[$index] == true">
+							<li ng-repeat="w in p.wishlist">{{ w }}</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="page-flow-button-div">
+				<button class="page-flow-button" ng-click="completeGiftExchange()">Good to Go!</button>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+	<script src="GiftExchangeApp.js"></script>
+	<script src="ParticipantController.js"></script>
+	<script src="ParticipantService.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "TheGiftExchangeApp",
+  "version": "1.0.5",
+  "description": "Gift Exchange Server",
+  "main": "server.js",
+  "engines": {
+    "node": "7.4.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Tim Sims",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.16.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "express-session": "^1.15.2",
+    "mongoose": "^4.8.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  }
+}

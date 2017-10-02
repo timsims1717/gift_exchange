@@ -1,0 +1,258 @@
+* {
+	margin: 0;
+	font-family: "Courier New", Courier, monospace;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	background-color: #eeeeee;
+}
+
+.page-wrap {
+	min-height: 100%;
+	margin-bottom: -2.52em;
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #BB2222;
+}
+
+.page-wrap:after {
+	content: "";
+	display: block;
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.left {
+	float: left;
+	clear: left;
+	min-height: 1em;
+}
+
+.right {
+	float: right;
+	clear: right;
+	min-height: 1em;
+}
+
+.clear {
+	clear: both;
+	min-height: 1px;
+}
+
+h1 {
+	text-align: center;
+	font-size: 5em;
+}
+
+h2 {
+	text-align: center;
+	font-size: 2em;
+}
+
+button {
+	border: 0;
+	border-radius: 0;
+	font-size: 1.1em;
+}
+
+button:focus {
+	outline: none;
+}
+
+.page-flow-button-div {
+	text-align: center;
+}
+
+.page-flow-button {
+	text-align: center;
+	font-size: 1.3em;
+	background-color: #22BB4D;
+}
+
+.error-message {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+/* BOX AND BOX BUTTONS */
+
+.box {
+	background-color: #eeeeee;
+	padding: 12px;
+	min-height: 1em;
+}
+
+.box-top-buttons {
+	display: inline;
+	list-style-type: none;
+	padding: 0;
+}
+
+.box-top-buttons li {
+	display: inline;
+}
+
+.box-top-buttons button {
+	background-color: #FF4848;
+}
+
+.box-top-buttons button:hover {
+	
+}
+
+.box-bottom-buttons {
+	display: inline;
+	list-style-type: none;
+	padding: 0;
+}
+
+.box-bottom-buttons li {
+	display: inline;
+}
+
+.box-bottom-buttons button {
+	background-color: #FF4848;
+}
+
+.box-bottom-buttons button:hover {
+
+}
+
+/* OVERLAP BOX */
+
+.overlap-box {
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background-color: #6E0A0A;
+}
+
+.overlap-table {
+}
+
+.overlap-table-right {
+	float: right;
+}
+
+.overlap-table tr {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.overlap-table .label {
+}
+
+.overlap-table .entry {
+
+}
+
+.wishlist-add-list {
+	list-style-type: none;
+	padding: 0;
+}
+
+.list-wishlist-button-add {
+	background-color: #22BB4D
+}
+
+.list-wishlist-button-remove {
+	background-color: #BB2222;
+}
+
+/* PARTICIPANTS LIST */
+
+.participant-list {
+	list-style-type: none;
+	padding: 0;
+}
+
+.participant-list li {
+	background-color: #cccccc;
+}
+
+.participant-list li:nth-of-type(2n) {
+	background-color: #aaaaaa;
+}
+
+.list-full-name {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+.list-email {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.list-button-edit {
+	float: right;
+	clear: right;
+	background-color: #22BB4D;
+	height: 24px;
+	width: 76px;
+}
+
+.list-button-delete {
+	float: right;
+	clear: right;
+	background-color: #BB2222;
+	height: 24px;
+	width: 76px;
+}
+
+.list-wishlist-drop {
+	display: block;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background: none;
+	font-size: 1em;
+}
+
+.list-wishlist-down {
+	list-style-type: none;
+	padding: 0;
+}
+
+.list-wishlist-down li {
+	background-color: #FF4848;
+	padding-left: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.list-wishlist-down li:nth-of-type(2n) {
+	background-color: #FF4848;
+	padding-left: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}

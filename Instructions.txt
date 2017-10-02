@@ -1,0 +1,26 @@
+Welcome! With this app you can easily build a gift exchange for up to 30 people. Not only will this randomly assign each person a recipient, but a wish list can be included to help out those who are gift-givingly-challenged.
+
+The first step is the hardest: getting everyone to send you their email and wish list. One suggestion is to give everyone a ridiculously short deadline, then guilt them by telling them everyone else is done (they're not).
+
+Once you've gathered the email and wish list of everyone involved, you're practically done! Start a new gift exchange and add people to the list of participants. Then, make sure you change your options to specify a dollar amount, the time and location of the gift exchange, and whether or not the gift exchange is meant to be secret. Finally, you may customize the message that gets sent to each participant.
+
+And that's it! We hope your gift exchange is a success!
+
+
+==========
+1. mongo setup: mLab
+2. app: listen on right port
+3. package.json
+	node version
+	name of script used to run server
+4. client inside public
+
+app.listen(app.get('port')
+
+"engines": {
+	"node": "7.4.0"
+}
+
+"scripts": {
+	"start": "node server.js"
+}
